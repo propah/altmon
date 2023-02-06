@@ -15,7 +15,7 @@ function validateAltmon(altmon: IAltmon) {
     if (altmon.name.length < 5 || altmon.name.length > 20) throw new Error(`invalid name`);
     if (!(/^[a-zA-Z]+$/).test(altmon.name)) throw new Error(`invalid name regex`);
     if (altmon.types.length < 1 || altmon.types.length > 2) throw new Error(`invalid types`);
-    if (altmon.attack < 0) throw new Error(`invalid attack`); 
+    if (altmon.attack < 0) throw new Error(`invalid attack`);
 }
 
 // @desc   Get all altmons

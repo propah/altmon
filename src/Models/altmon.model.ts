@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { Schema, Types } from "mongoose";
 
 
 interface IAltmon {
@@ -15,11 +15,12 @@ interface IAltmon {
     speed: number;
     weight: number;
     rarity: string;
+    user: Types.ObjectId;
 }
 
 const altmonSchema = new mongoose.Schema<IAltmon>({
     _id: { type: Number, required: true },
-    name: { type: String, required: true },
+    name: { type: String, required: true, unique: true },
     types: { type: [String], required: true },
     moves: { type: [String], required: true },
     image_link: { type: String, required: true },
@@ -30,7 +31,8 @@ const altmonSchema = new mongoose.Schema<IAltmon>({
     special_defense: { type: Number, required: true },
     speed: { type: Number, required: true },
     weight: { type: Number, required: true },
-    rarity: { type: String, required: true }
+    rarity: { type: String, required: true },
+    user: { type: Schema.Types.ObjectId, ref: "User", required: true }
 });
 
 const Altmon = mongoose.model<IAltmon>("Altmon", altmonSchema);
