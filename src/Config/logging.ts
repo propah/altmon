@@ -9,44 +9,44 @@ colors.enable();
 const info = (namespace: string, message: string, object?: any) => {
   if (object) {
     console.info(
-      `[${getTimeStamp()}] [INFO] [${namespace}] ${message}`.white,
+      `[${getTimeStamp()}] [INFO] [${namespace}]\t${message}`.white,
       object
     );
   } else {
-    console.info(`[${getTimeStamp()}] [INFO] [${namespace}] ${message}`.white);
+    console.info(`[${getTimeStamp()}] [INFO] [${namespace}]\t${message}`.white);
   }
 };
 
 const debug = (namespace: string, message: string, object?: any) => {
   if (object) {
     console.debug(
-      `[${getTimeStamp()}] [DEBUG] [${namespace}] ${message}`.grey,
+      `[${getTimeStamp()}] [DEBUG] [${namespace}]\t${message}`.grey,
       object
     );
   } else {
-    console.debug(`[${getTimeStamp()}] [DEBUG] [${namespace}] ${message}`.grey);
+    console.debug(`[${getTimeStamp()}] [DEBUG] [${namespace}]\t${message}`.grey);
   }
 };
 
 const warn = (namespace: string, message: string, object?: any) => {
   if (object) {
     console.warn(
-      `[${getTimeStamp()}] [WARN] [${namespace}] ${message}`.yellow,
+      `[${getTimeStamp()}] [WARN] [${namespace}]\t${message}`.yellow,
       object
     );
   } else {
-    console.warn(`[${getTimeStamp()}] [WARN] [${namespace}] ${message}`.yellow);
+    console.warn(`[${getTimeStamp()}] [WARN] [${namespace}]\t${message}`.yellow);
   }
 };
 
 const error = (namespace: string, message: string, object?: any) => {
   if (object) {
     console.error(
-      `[${getTimeStamp()}] [ERROR] [${namespace}] ${message}`.red,
+      `[${getTimeStamp()}] [ERROR] [${namespace}]\t${message}`.red,
       object
     );
   } else {
-    console.error(`[${getTimeStamp()}] [ERROR] [${namespace}] ${message}`.red);
+    console.error(`[${getTimeStamp()}] [ERROR] [${namespace}]\t${message}`.red);
   }
 };
 

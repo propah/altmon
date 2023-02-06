@@ -7,9 +7,9 @@ altmon_router.get("/altmons", getAltmons);
 
 altmon_router.get("/altmons/:id", getAltmon);
 
-altmon_router.post("/altmons/:id", postAltmon);
+altmon_router.post("/altmons", postAltmon);
 
-altmon_router.put("/altmons", putAltmon);
+altmon_router.put("/altmons/:id", putAltmon);
 
 altmon_router.delete("/altmons/:id", deleteAltmon);
 
