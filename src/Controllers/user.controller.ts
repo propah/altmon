@@ -31,7 +31,12 @@ function generateJWT(id: string): String {
 const registerUser = asyncHandler(async (req: Request, res: Response) => {
     try {
         logging.debug(NAMESPACE, `Registering user ${req.body.username}`, req.socket.remoteAddress);
-        const user = new User(req.body);
+        const user = new User({
+            username: req.body.username,
+            email: req.body.email,
+            password: req.body.password,
+            role: "user"
+        });
         const error: Error | undefined = validateUserInfoFormat(user);
         if (error) res.status(400).json({ message: error.message });
         if (await User.findOne({ email: user.email })) {
