@@ -10,7 +10,7 @@ altmonRouter.get("/altmons/:id", getAltmon);
 
 altmonRouter.post("/altmons", protect, postAltmon);
 
-altmonRouter.put("/altmons/:id", putAltmon);
+altmonRouter.put("/altmons/:id", protect, putAltmon);
 
 altmonRouter.delete("/altmons/:id", deleteAltmon);
 
