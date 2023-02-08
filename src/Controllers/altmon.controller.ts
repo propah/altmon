@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import asyncHandler from 'express-async-handler';
-import { blobFromSync } from 'node-fetch';
 import logging from '../Config/logging';
 import { Altmon, IAltmon } from '../Models/altmon.model';
 const NAMESPACE = 'AltmonController';
@@ -16,6 +15,7 @@ function validateAltmon(altmon: IAltmon) {
     if (!(/^[a-zA-Z]+$/).test(altmon.name)) throw new Error(`invalid name regex`);
     if (altmon.types.length < 1 || altmon.types.length > 2) throw new Error(`invalid types`);
     if (altmon.attack < 0) throw new Error(`invalid attack`);
+    // TODO : Chek all other stats
 }
 
 // @desc   Get all altmons
@@ -85,7 +85,22 @@ const putAltmon = asyncHandler(async (req: Request, res: Response) => {
 const postAltmon = asyncHandler(async (req: Request, res: Response) => {
     try {
         logging.debug(NAMESPACE, `Creating altmon with id ${req.body._id}`, req.socket.remoteAddress);
-        const altmon = new Altmon(req.body);
+        const altmon = new Altmon({ 
+            _id: req.body.id,
+            name: req.body.name,
+            types: req.body.types,
+            moves: req.body.moves,
+            image_link: req.body.image_link,
+            hp: req.body.hp,
+            attack: req.body.attack,
+            defense: req.body.defense,
+            special_attack: req.body.special_attack,
+            special_defense: req.body.special_defense,
+            speed: req.body.speed,
+            weight: req.body.weight,
+            rarity: req.body.rarity,
+            user: res.locals.user._id
+         });
         validateAltmon(altmon);
         await altmon.save();
         logging.debug(NAMESPACE, `Created altmon with id ${req.body._id}`, req.socket.remoteAddress);
