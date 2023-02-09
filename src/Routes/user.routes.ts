@@ -1,7 +1,7 @@
 import express from "express";
 const userRouter = express.Router();
 import { registerUser, loginUser, getOwnUserData } from "../Controllers/user.controller";
-import protect from "../Middleware/auth.middleware";
+import { protect } from "../Middleware/auth.middleware";
 
 const NAMESPACE = "UserRoutes";
 
