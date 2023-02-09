@@ -1,16 +1,17 @@
 import express from "express";
-import{ getAltmons, deleteAltmon, getAltmon, postAltmon, putAltmon } from "../Controllers/altmon.controller";
-const altmon_router = express.Router();
+import{ getAltmons, deleteAltmon, getAltmon, createAltmon, updateAltmon } from "../Controllers/altmon.controller";
+import { protect, adminOnly } from "../Middleware/auth.middleware";
+const altmonRouter = express.Router();
 const NAMESPACE = "AltmonRoutes";
 
-altmon_router.get("/altmons", getAltmons);
+altmonRouter.get("/altmons", getAltmons);
 
-altmon_router.get("/altmons/:id", getAltmon);
+altmonRouter.get("/altmons/:id", getAltmon);
 
-altmon_router.post("/altmons", postAltmon);
+altmonRouter.post("/altmons", protect, adminOnly, createAltmon);
 
-altmon_router.put("/altmons/:id", putAltmon);
+altmonRouter.put("/altmons/:id", protect, updateAltmon);
 
-altmon_router.delete("/altmons/:id", deleteAltmon);
+altmonRouter.delete("/altmons/:id", protect, deleteAltmon);
 
-export = altmon_router
+export = altmonRouter
