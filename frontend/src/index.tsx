@@ -8,7 +8,7 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
-document.body.style.backgroundColor = '#121416';
+document.body.classList.add('bg-gradient-to-r','from-black','to-slate-900');
 root.render(
   <React.StrictMode>
     <App />
