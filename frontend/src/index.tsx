@@ -8,7 +8,19 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
-document.body.classList.add('bg-gradient-to-r','from-black','to-slate-900');
+//Random middle background color
+document.body.classList.add('bg-gradient-to-r','from-black','via-gray-900', 'to-black');
+const colors = ["via-gray-900"]
+  Array.from(document.body.classList.values()).forEach(type => {
+  console.log(type)
+      if (type.includes('via-')) {
+          console.log(document.body.classList)
+          document.body.classList.remove(type);
+          type = colors[Math.floor(Math.random() * colors.length)]
+          document.body.classList.add(type);
+      }
+});
+
 root.render(
   <React.StrictMode>
     <App />
