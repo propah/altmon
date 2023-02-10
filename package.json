@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node backend/build/server.ts",
     "build": "rm -rf backend/build/ && prettier --write backend/src/ && tsc",
-    "dev": "nodemon backend/src/server.ts"
+    "dev": "nodemon backend/src/server.ts",
+    "client": "npm start --prefix frontend"
   },
   "keywords": [],
   "author": "",
