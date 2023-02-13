@@ -53,7 +53,7 @@ function Login() {
               </div>
                 <div className="mb-6 text-center text-lg fs-regular">
                   <button
-                    className="w-full px-4 py-2 font-bold text-black bg-gradient-to-r from-red-500 via-amber-500 to-orange-500 hover:bg-gradient-to-r hover:from-red-500 hover:via-amber-400 hover:to-orange-500 animate-color rounded-full focus:outline-none focus:shadow-outline"
+                    className="w-full px-4 py-2 font-bold text-black hover:text-zinc-300 bg-gradient-to-r from-red-500 via-amber-500 to-orange-500 hover:bg-gradient-to-r hover:from-red-500 hover:via-amber-400 hover:to-orange-500 animate-color rounded-full focus:outline-none focus:shadow-outline"
                     type="submit"
                   >
                     Submit
