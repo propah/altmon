@@ -9,11 +9,11 @@ colors.enable();
 const info = (namespace: string, message: string, object?: any) => {
   if (object) {
     console.info(
-      `[${getTimeStamp()}] [INFO] [${namespace}]\t${message}`.white,
+      `[${getTimeStamp()}] [INFO]  [${namespace}]\t${message}`.white,
       object
     );
   } else {
-    console.info(`[${getTimeStamp()}] [INFO] [${namespace}]\t${message}`.white);
+    console.info(`[${getTimeStamp()}]  [INFO] [${namespace}]\t${message}`.white);
   }
 };
 
@@ -31,11 +31,11 @@ const debug = (namespace: string, message: string, object?: any) => {
 const warn = (namespace: string, message: string, object?: any) => {
   if (object) {
     console.warn(
-      `[${getTimeStamp()}] [WARN] [${namespace}]\t${message}`.yellow,
+      `[${getTimeStamp()}]  [WARN] [${namespace}]\t${message}`.yellow,
       object
     );
   } else {
-    console.warn(`[${getTimeStamp()}] [WARN] [${namespace}]\t${message}`.yellow);
+    console.warn(`[${getTimeStamp()}]  [WARN] [${namespace}]\t${message}`.yellow);
   }
 };
 
