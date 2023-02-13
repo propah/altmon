@@ -38,7 +38,10 @@ const registerUser = asyncHandler(async (req: Request, res: Response) => {
             role: "user"
         });
         const error: Error | undefined = validateUserInfoFormat(user);
-        if (error) res.status(400).json({ message: error.message });
+        if (error) {
+            res.status(400).json({ message: error.message });
+            return;
+        }
         if (await User.findOne({ email: user.email })) {
             res.status(400).json({ message: `Email ${user.email} is already taken` });
         } else if (await User.findOne({ username: user.username })) {

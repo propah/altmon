@@ -1,0 +1,14 @@
+@font-face {
+  font-family: "fs-bold";
+  src: url("./fonts/fs-me/fs-me-bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "fs-regular";
+  src: url("./fonts/fs-me/fs-me-regular.otf") format("opentype");
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
