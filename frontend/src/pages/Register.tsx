@@ -1,5 +1,12 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
+import { register, reset} from '../features/auth/AuthSlice';
+import { AppDispatch, RootState } from "../app/store";
+
+
+
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -11,6 +18,22 @@ function Register() {
 
   const { username, email, password, password2 } = formData;
 
+  const navigate = useNavigate();
+  const dispatch = useDispatch<AppDispatch>();
+
+  const { user, isLoading, isError, isSuccess, message } = useSelector((state: RootState) => state.auth);
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(message);
+    }
+    if (isSuccess || user) {
+      navigate('/');
+    }
+    dispatch(reset());
+    
+  },[user, isError, isSuccess, message, navigate, dispatch]);
+
   const onChange = (e: { target: { name: any; value: any } }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -18,9 +41,15 @@ function Register() {
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (password !== password2) {
-      console.log("Passwords do not match");
+      toast.error("Passwords do not match");
     } else {
-      console.log(formData);
+      const userData = {
+        username,
+        email,
+        password,
+      };
+
+      dispatch(register(userData));
     }
   };
 
@@ -100,12 +129,11 @@ function Register() {
               </div>
               <Link to='/login' className=''>
                 <div className="text-center fs-regular">
-                    <a
+                    <p
                     className="inline-block text-base text-white align-baselinefocus:outline-none hover:bg-gray-200 hover:text-black p-3 rounded"
-                    href="./login"
                     >
                     Login
-                    </a>
+                    </p>
                 </div>
               </Link>
             </form>

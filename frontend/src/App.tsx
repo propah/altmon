@@ -5,10 +5,10 @@ import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
-  
-
   return (
     <>
       <Router>
@@ -20,6 +20,7 @@ function App() {
           <Route path='/register' element={<Register />} />
         </Routes>
       </Router>
+      <ToastContainer />
     </>
   );
 }
