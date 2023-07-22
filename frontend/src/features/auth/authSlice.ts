@@ -10,6 +10,7 @@ const initial_state = {
     message: ''
 }
 
+
 export const authSlice = createSlice({
     name: 'auth',
     initialState: initial_state,
