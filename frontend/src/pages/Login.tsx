@@ -14,6 +14,7 @@ function Login() {
   };
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    console.log(e);
     e.preventDefault();
   };
   return (
